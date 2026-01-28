@@ -1,0 +1,303 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   LINGUAAI - BRUTALIST MINIMAL DESIGN SYSTEM
+   ============================================ */
+
+:root {
+  --brutal-black: #0a0a0a;
+  --brutal-white: #fafafa;
+  --brutal-yellow: #ffeb3b;
+  --brutal-red: #ff1744;
+  --brutal-blue: #2979ff;
+  --brutal-green: #00e676;
+  --brutal-purple: #d500f9;
+  --brutal-orange: #ff9100;
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--brutal-white);
+  color: var(--brutal-black);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Brutalist Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--brutal-white);
+  border-left: 2px solid var(--brutal-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--brutal-black);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+@layer components {
+  /* Brutalist Button Base */
+  .btn-brutal {
+    @apply font-bold uppercase tracking-wider px-6 py-3;
+    @apply border-4 border-brutal-black bg-brutal-white;
+    @apply shadow-brutal transition-all duration-150;
+    @apply hover:shadow-brutal-hover hover:-translate-x-0.5 hover:-translate-y-0.5;
+    @apply active:shadow-none active:translate-x-1 active:translate-y-1;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-brutal disabled:hover:translate-x-0 disabled:hover:translate-y-0;
+  }
+
+  .btn-brutal-primary {
+    @apply btn-brutal bg-brutal-yellow;
+  }
+
+  .btn-brutal-secondary {
+    @apply btn-brutal bg-brutal-blue text-white;
+  }
+
+  .btn-brutal-danger {
+    @apply btn-brutal bg-brutal-red text-white;
+  }
+
+  .btn-brutal-success {
+    @apply btn-brutal bg-brutal-green text-brutal-black;
+  }
+
+  /* Brutalist Card */
+  .card-brutal {
+    @apply bg-brutal-white border-4 border-brutal-black shadow-brutal;
+    @apply p-6;
+  }
+
+  .card-brutal-hover {
+    @apply card-brutal transition-all duration-150;
+    @apply hover:shadow-brutal-hover hover:-translate-x-0.5 hover:-translate-y-0.5;
+  }
+
+  /* Brutalist Input */
+  .input-brutal {
+    @apply w-full px-4 py-3 font-mono text-lg;
+    @apply border-4 border-brutal-black bg-brutal-white;
+    @apply focus:outline-none focus:ring-4 focus:ring-brutal-yellow focus:ring-offset-0;
+    @apply placeholder:text-gray-400;
+  }
+
+  /* Brutalist Badge */
+  .badge-brutal {
+    @apply inline-flex items-center px-3 py-1;
+    @apply font-mono text-sm font-bold uppercase;
+    @apply border-2 border-brutal-black;
+  }
+
+  /* XP Bar */
+  .xp-bar-container {
+    @apply w-full h-8 border-4 border-brutal-black bg-brutal-white relative overflow-hidden;
+  }
+
+  .xp-bar-fill {
+    @apply h-full bg-brutal-yellow transition-all duration-500 ease-out;
+  }
+
+  .xp-bar-text {
+    @apply absolute inset-0 flex items-center justify-center;
+    @apply font-mono font-bold text-sm;
+  }
+
+  /* Recording Indicator */
+  .recording-pulse {
+    @apply w-4 h-4 bg-brutal-red rounded-full;
+    animation: recording-pulse 1s ease-in-out infinite;
+  }
+
+  @keyframes recording-pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.3);
+      opacity: 0.7;
+    }
+  }
+
+  /* Score Display */
+  .score-display {
+    @apply text-6xl font-black font-mono;
+  }
+
+  .score-display.excellent {
+    @apply text-brutal-green;
+  }
+
+  .score-display.good {
+    @apply text-brutal-yellow;
+    text-shadow: 2px 2px 0 var(--brutal-black);
+  }
+
+  .score-display.needs-work {
+    @apply text-brutal-orange;
+  }
+
+  .score-display.poor {
+    @apply text-brutal-red;
+  }
+
+  /* Navigation */
+  .nav-brutal {
+    @apply border-b-4 border-brutal-black bg-brutal-white;
+  }
+
+  .nav-link {
+    @apply px-4 py-3 font-bold uppercase tracking-wider;
+    @apply border-b-4 border-transparent;
+    @apply hover:border-brutal-yellow hover:bg-brutal-yellow/10;
+    @apply transition-all duration-150;
+  }
+
+  .nav-link.active {
+    @apply border-brutal-yellow bg-brutal-yellow/20;
+  }
+
+  /* Page Header */
+  .page-header {
+    @apply text-4xl md:text-6xl font-black uppercase tracking-tight;
+    @apply border-b-4 border-brutal-black pb-4 mb-8;
+  }
+
+  /* Difficulty Badges */
+  .difficulty-easy {
+    @apply badge-brutal bg-brutal-green text-brutal-black;
+  }
+
+  .difficulty-medium {
+    @apply badge-brutal bg-brutal-yellow text-brutal-black;
+  }
+
+  .difficulty-hard {
+    @apply badge-brutal bg-brutal-red text-white;
+  }
+
+  /* Streak Counter */
+  .streak-counter {
+    @apply flex items-center gap-2 font-mono font-bold;
+  }
+
+  .streak-fire {
+    @apply text-2xl;
+    animation: fire-wobble 0.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes fire-wobble {
+    from { transform: rotate(-5deg) scale(1); }
+    to { transform: rotate(5deg) scale(1.1); }
+  }
+
+  /* Level Badge */
+  .level-badge {
+    @apply inline-flex items-center justify-center;
+    @apply w-14 h-14 text-xl font-black;
+    @apply border-4 border-brutal-black bg-brutal-purple text-white;
+    @apply transform rotate-3;
+  }
+
+  /* Achievement Badge */
+  .achievement-badge {
+    @apply p-4 border-4 border-brutal-black bg-brutal-white;
+    @apply flex flex-col items-center gap-2;
+    @apply hover:bg-brutal-yellow/20 transition-colors;
+  }
+
+  .achievement-badge.locked {
+    @apply opacity-40 grayscale;
+  }
+
+  /* Audio Waveform */
+  .waveform-bar {
+    @apply w-1 bg-brutal-black;
+    animation: waveform 0.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes waveform {
+    from { height: 10px; }
+    to { height: 30px; }
+  }
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+.animate-in {
+  animation: slide-up 0.3s ease-out forwards;
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-10px); }
+  40% { transform: translateX(10px); }
+  60% { transform: translateX(-10px); }
+  80% { transform: translateX(10px); }
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.5s ease-out forwards;
+}
+
+@keyframes bounce-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ============================================
+   PAGE TRANSITIONS
+   ============================================ */
+
+.page-container {
+  @apply min-h-screen p-4 md:p-8;
+  animation: fade-in 0.3s ease-out;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
