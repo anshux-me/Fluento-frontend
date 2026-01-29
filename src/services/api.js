@@ -3,6 +3,8 @@
  * Handles all HTTP requests to the backend
  */
 
+import { getRandomWord as getWordFromFirestore, getDailyWords as getDailyWordsFromFirestore, getWordStats } from './wordService';
+
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 /**
@@ -98,25 +100,29 @@ export async function updateUserStats(firebaseUid, xpEarned, mode) {
 // ============== Word Endpoints ==============
 
 /**
- * Get a random word for practice
+ * Get a random word for practice (from Firestore)
  */
 export async function getWord(mode, difficulty) {
-    return apiRequest(`/word/${mode}/${difficulty}`);
+    return getWordFromFirestore(difficulty);
 }
 
 /**
- * Get the 5 words of the day
+ * Get the 5 words of the day (from Firestore)
  */
 export async function getDailyWords() {
-    return apiRequest('/word/daily');
+    const words = await getDailyWordsFromFirestore();
+    return { words };
 }
 
 /**
- * Get word count
+ * Get word count (from Firestore)
  */
 export async function getWordCount(difficulty = null) {
-    const query = difficulty ? `?difficulty=${difficulty}` : '';
-    return apiRequest(`/word/count${query}`);
+    const stats = await getWordStats();
+    if (difficulty) {
+        return { count: stats[difficulty.toLowerCase()] || 0, difficulty };
+    }
+    return { count: stats.total || 0, difficulty: null };
 }
 
 // ============== Pronunciation Endpoints ==============
