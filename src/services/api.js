@@ -105,6 +105,13 @@ export async function getWord(mode, difficulty) {
 }
 
 /**
+ * Get the 5 words of the day
+ */
+export async function getDailyWords() {
+    return apiRequest('/word/daily');
+}
+
+/**
  * Get word count
  */
 export async function getWordCount(difficulty = null) {

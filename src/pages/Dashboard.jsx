@@ -9,6 +9,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { getUserProfile } from '../services/api';
 import XPBar from '../components/XPBar';
 import BadgeDisplay from '../components/BadgeDisplay';
+import WordOfTheDay from '../components/WordOfTheDay';
 
 export function Dashboard() {
     const { user } = useAuth();
@@ -43,7 +44,7 @@ export function Dashboard() {
                             <div
                                 key={i}
                                 className="waveform-bar"
-                                style={{ animationDelay: `${i * 0.1}s` }}
+                                style={{ animationDelay: `${i * 2}s` }}
                             />
                         ))}
                     </div>
@@ -69,6 +70,9 @@ export function Dashboard() {
                     Welcome{profile?.display_name ? `, ${profile.display_name}` : ''}!
                 </h1>
             </div>
+
+            {/* Word of the Day - TOP of dashboard */}
+            <WordOfTheDay />
 
             {/* Error Message */}
             {error && (

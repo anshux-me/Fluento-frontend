@@ -123,13 +123,13 @@ export function Profile() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="p-6 bg-brutal-blue/10 border-4 border-brutal-blue text-center">
-                        <div className="text-5xl font-black text-brutal-blue">
+                        <div className="text-3xl sm:text-5xl font-black text-brutal-blue">
                             {stats.best_pronunciation_score || 0}%
                         </div>
                         <div className="font-mono uppercase mt-2">🎤 Pronunciation</div>
                     </div>
                     <div className="p-6 bg-brutal-purple/10 border-4 border-brutal-purple text-center">
-                        <div className="text-5xl font-black text-brutal-purple">
+                        <div className="text-3xl sm:text-5xl font-black text-brutal-purple">
                             {stats.best_spelling_score || 0}%
                         </div>
                         <div className="font-mono uppercase mt-2">📝 Spelling</div>

@@ -128,7 +128,7 @@ export function Pronunciation() {
                         <span className={`difficulty-${difficulty} mb-4 inline-block`}>
                             {difficulty.toUpperCase()}
                         </span>
-                        <h2 className="text-5xl md:text-7xl font-black uppercase mb-4">
+                        <h2 className="text-3xl sm:text-5xl md:text-7xl font-black uppercase mb-4 break-words">
                             {currentWord.word}
                         </h2>
                         <p className="font-mono text-gray-600 max-w-md mx-auto">

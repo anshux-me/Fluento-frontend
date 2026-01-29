@@ -158,7 +158,7 @@ export function Spelling() {
                         </h2>
 
                         {/* Audio Player */}
-                        <AudioPlayer audioUrl={audioUrl} autoPlay={true} />
+                        <AudioPlayer audioUrl={audioUrl} autoPlay={false} />
 
                         {/* Hint */}
                         <div className="mt-6">
@@ -222,11 +222,11 @@ export function Spelling() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 border-t-4 border-brutal-black pt-6">
                         <div className={`p-4 border-4 ${result.score === 100 ? 'bg-brutal-green/20 border-brutal-green' : 'bg-gray-100 border-brutal-black'}`}>
                             <h4 className="font-bold uppercase text-sm mb-2">Your Answer</h4>
-                            <p className="font-mono text-2xl tracking-wider">{result.user_text}</p>
+                            <p className="font-mono text-lg sm:text-2xl tracking-wider break-all">{result.user_text}</p>
                         </div>
                         <div className="p-4 bg-gray-100 border-4 border-brutal-black">
                             <h4 className="font-bold uppercase text-sm mb-2">Correct Spelling</h4>
-                            <p className="font-mono text-2xl tracking-wider">{result.correct_word}</p>
+                            <p className="font-mono text-lg sm:text-2xl tracking-wider">{result.correct_word}</p>
                         </div>
                     </div>
 
