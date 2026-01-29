@@ -41,3 +41,7 @@ coverage/
 
 # Vercel
 .vercel/
+
+# SSH keys
+file
+file.pub
